@@ -1,0 +1,134 @@
+{% extends  "base.html" %}
+{% load static %}
+
+{% block title %}
+ RENT
+{% endblock %}
+
+{% block mymessage %}
+
+  {% include 'navbar.html' %}
+
+  
+  
+  <style>
+   
+#scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color:brown;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;
+  width: 200px;
+}
+    .card-body{
+      position: relative;
+    }
+
+ 
+     #submit{
+      
+    position: absolute;
+    bottom: 20px;
+    right: 139PX;
+
+    } 
+
+    label{
+      margin-left: 228px;
+      margin-bottom: 25px;
+    }
+  </style>
+  {% include 'message.html' %}
+  
+  <section class="bg-light py-4 m-5">
+  <div class="container">
+    <div class="row" >
+        <div class=" col-12">
+          <h4 class="mb-3">Products</h4>
+          <hr style="border-color: white;">
+        </div>
+      
+   
+        
+        {% for product in products %}
+        
+        <div class="col-md-4 col-lg-4 product">
+          <div class="card my-3">
+            <span class="px-3 py-1" style="color: blueviolet;">Product id:{{product.product_id}}</span>
+            <img src="{{product.product_image.url}} " alt="categories" class="card-image-top" height="150px" width="354px" >
+            
+            <div class="card-body" style="height: 770px;">
+              <h5 class="card-title text-primary text-center">{{product.name}} </h5>
+              <span style="color: firebrick;" class="ms-5 ps-5">RENT:{{product.rent}}</span>
+                <form action="" method="POST">
+                  {% csrf_token %}
+                  <label for="" class="text-secondary ">Product id</label><br>
+                  <input type="text"  class="form-control  " name="product_id">
+                  <label for="" class="text-secondary ">Product qty:</label><br>
+                  <input type="number" class="form-control" name="product_qty">
+                  <label for="" class="text-secondary ">User id:</label><br>
+                  <input type="email" class="form-control " name="email">
+                  <label for="" class="text-secondary ">Start date:</label><br>
+                  <input type="date" name="stdt" class="form-control">
+                  <label for="" class="text-secondary ">Return date:</label><br>
+                  <input type="date" name="rtdt" class="form-control">
+                  <label for="" class="text-secondary ">Total days :</label><br>
+                  <input type="text" name="tdays" class="form-control">
+                  <label for="" class="text-secondary" style="margin-left: 212px;">Total amount:</label><br>
+                  <input type="text" name="tamnt" class="form-control">
+
+                  {% if product.quantity > 0 %}
+                  <button  type="submit" class="btn btn-primary" style="margin-left: 88px;" id="submit">Rent Now</button>
+                    {% else %}
+                    <button class="btn btn-danger" style="margin-left: 88px;">Out of Stock</button>
+                    {% endif %}
+
+                   
+                  </form>
+
+            </div>
+          </div>
+
+        </div>
+       
+           {% endfor %}
+        
+           <button id="scrollToTop">Scroll to Top</button>
+          </section> 
+
+
+          <script>
+            var scrollToTopButton = document.getElementById("scrollToTop");
+            
+            window.addEventListener("scroll", function() {
+              if (window.scrollY > 200) {
+                  scrollToTopButton.style.display = "block";
+              } else {
+                  scrollToTopButton.style.display = "none";
+              }
+            });
+            
+            // Scroll to the top 
+            scrollToTopButton.addEventListener("click", function() {
+              window.scrollTo({
+                  top: 0,
+                  behavior: "smooth"
+              });
+            });
+            </script> 
+           
+
+          {% endblock %}   
+         
+{% block footer %}
+
+{% include 'footer.html' %}
+{% endblock %}
+
+

@@ -1,0 +1,65 @@
+{% extends  "base.html" %}
+{% load static %}
+
+{% block title %}
+collections
+{% endblock %}
+
+{% block mymessage %}
+
+  {% include 'navbar.html' %}
+
+  <style>
+    .card-body{
+      position: relative;
+    }
+
+    #btn{
+      position: absolute;
+      bottom: 30px;
+      right: 150px;
+    }
+    a{
+      text-decoration: none;
+    }
+  </style>
+  {% include 'message.html' %}
+  
+  <section class="bg-light py-4 m-5">
+  <div class="container">
+    <div class="row" >
+        <div class=" col-12">
+          <h4 class="mb-3">Categories</h4>
+          <hr style="border-color: white;">
+        </div>
+        {% if query %}
+        <p>Search results for "{{query}}" </p>
+
+        {% endif %}
+
+        {% for item in category %}
+        <div class="col-md-4 col-lg-4">
+          <div class="card my-3">
+            <img src="{{item.image.url}}" alt="categories" class="card-image-top" height="230px" width="354px">
+            <a href="{% url 'collections'  %}">
+            <div class="card-body" style="height: 230px;">
+              <h5 class="card-title text-primary text-center">{{item.name}} </h5>
+              <p class="card-text">{{item.description}} </p>
+              <div>
+              <a href="{% url 'index' %}" class="btn btn-primary btn-sm " id="btn" >view details</a>
+            </a>
+            </div>
+            </div>
+          </div>
+
+        </div>
+     
+           {% endfor %}
+          </section>       
+
+{% endblock %}
+
+{% block footer %}
+
+{% include 'footer.html' %}
+{% endblock %}

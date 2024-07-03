@@ -1,0 +1,34 @@
+
+
+i.fa.fa-search {
+    transform: translate(2px, 0px);
+
+}
+.submit{
+background-color: #fff;
+    border-color: #0d6efd;
+    color: darkorchid;
+    border-radius: 20px;
+}
+
+
+
+.fa-heart{
+    font-size: 26px;
+    transform: translateY(4px);
+    color: #fff;
+}
+
+.fa-cart-shopping  {
+    font-size: 21px;
+    transform: translateY(2px);
+    padding-right: 6px;
+    color:#fff;
+}
+
+
+       
+
+                        
+
+ 

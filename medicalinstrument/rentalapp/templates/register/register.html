@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ Register Page
+{% endblock %}
+
+{% block mymessage %}
+
+<style>
+    select{
+        border-radius: 5px;
+        color:grey;
+    }
+
+    body{
+        background-color: antiquewhite;
+    }
+  
+
+#form {
+    background-color: darkseagreen;
+    border-radius: 30px;
+}
+</style>
+
+<form  method="POST" action="" align="center" class="container w-50 py-3 my-3 " id="form" style="height:950PX;" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <h3 class="text-white">REGISTRATION FORM</h3>
+    {% include 'message.html' %}
+    <input type="text" placeholder="USER NAME" class="form-control text-center" name="Username"><br>
+    <input type="email" placeholder="EMAIL ADDRESS(USER ID)" class="form-control text-center" name="email"><br>
+    <input type="password" placeholder="PASSWORD" class="form-control text-center" name="password"><br>
+    <input type="password" placeholder="CONFIRM PASSWORD" class="form-control text-center" name="confirmpassword"><br>
+    <label class="text-white">DATE OF BIRTH</label>
+    <input type="date" placeholder="DATE OF BIRTH" class="form-control text-center" name="dob"><br>
+    <input type="text" placeholder="MOBILE NUMBER" class="form-control text-center" name="mobno"><br>
+    <select name="gender" class="w-100 mb-3 text-center " style="height: 40px;" style="border-radius: 8px;" >
+        <option >SELECT THE GENDER</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+     </select>   
+   
+   
+    <input type="text" name="address" class="form-control text-center" name="address" placeholder="ENTER THE ADDRESS" ><br>
+    
+    <img  alt="preview" id="preview" width="200px" height="200px" align="center" src="../static/image/user.jpg"> <br>
+    <input type="file" name="image" placeholder="upload image" accept="image/*" onchange="previewImage(event)" class="mt-5" style="margin-left: 185px;"><br>
+    <button class=" btn btn-success text-center form-control mt-4"> Sign UP</button>
+    
+</form>
+
+
+    <script type="text/javascript">
+      function previewImage(event) {
+         var input = event.target;
+         var image = document.getElementById('preview');
+         if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+               image.src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+         }
+      }
+   </script>
+
+
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends  "base.html" %}
+{% load static %}
+
+{% block title %}
+Products
+{% endblock %}
+
+{% block mymessage %}
+
+  {% include 'navbar.html' %}
+
+
+  
+  
+  <style>
+   
+#scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color:brown;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;
+  width: 200px;
+}
+    .card-body{
+      position: relative;
+    }
+
+   #counter-value {
+    width: 33px;
+    background-color: aliceblue;
+    text-align: center;
+    align-content: center;
+}
+     #btn-group{
+      position: absolute;
+      bottom: 25px;
+      right: 53PX;
+    
+    } 
+  </style>
+  {% include 'message.html' %}
+
+  
+  <div id="searchResults" class="search-results">
+  <section class="bg-light py-4 m-5">
+  <div class="container">
+    <div class="row" >
+        <div class=" col-12">
+          <h4 class="mb-3">Products</h4>
+          <hr style="border-color: white;">
+        </div>
+      
+        {% if query %}
+        <p>Search results for "{{ query }}":</p>
+        {% endif %}
+        
+        {% for product in products %}
+        
+        <div class="col-md-4 col-lg-4 product">
+          <div class="card my-3">
+         
+            <img src="{{product.product_image.url}} " alt="categories" class="card-image-top" height="300px" width="354px" >
+            
+            <div class="card-body" style="height:320px;">
+              <h5 class="card-title text-primary text-center">{{product.name}} </h5>
+              <p class="card-text">
+                <span class="float-start bg-danger text-white p-1" style="border-radius:10px"><s>Rs.{{product.original_price}}</s></span>
+                <span style="color: firebrick;" class="ps-2">RENT: RS {{product.rent_rate | floatformat:"0" }} per day </span>
+                <span class="float-end  bg-success text-white p-1" style="border-radius:10px">Rs.{{product.selling_price }}</span><br>
+                <p >{{product.description}}</p>
+                </p>
+                <span class="bg-secondary text-white p-1  " style="border-radius:10px">Stock: {{product.quantity}} nos</span>
+               {% if product.quantity > 0 %} 
+              <div class="btn-group" id="btn-group">
+              <a href="{% url 'adc' product.id %}" class="btn btn-primary btn-sm" id="btnCart">Add to Cart</a>
+            
+              <a href="{% url 'adb' %}" class="btn btn-success btn-sm" >BUY NOW</a>
+              <a href="{% url 'adr' %}" class="btn  btn-sm text-white" style="background-color: orange;">RENT NOW</a>
+
+            </div>
+            
+              {% else %}
+              <button class="btn btn-danger" align-center>Out of Stock</button>
+                {% endif %}
+            </div>
+          </div>
+
+        </div>
+       
+           {% endfor %}
+          
+
+          
+
+         
+           <button id="scrollToTop">Scroll to Top</button>
+          </section> 
+        </div>
+          
+          <script>
+            var scrollToTopButton = document.getElementById("scrollToTop");
+            
+            window.addEventListener("scroll", function() {
+              if (window.scrollY > 200) {
+                  scrollToTopButton.style.display = "block";
+              } else {
+                  scrollToTopButton.style.display = "none";
+              }
+            });
+            
+            // Scroll to the top 
+            scrollToTopButton.addEventListener("click", function() {
+              window.scrollTo({
+                  top: 0,
+                  behavior: "smooth"
+              });
+            });
+            </script> 
+           
+{% endblock %}
+
+{% block footer %}
+
+{% include 'footer.html' %}
+{% endblock %}
+
+

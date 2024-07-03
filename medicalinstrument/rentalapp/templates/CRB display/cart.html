@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+ Items in Cart
+{% endblock %}
+
+{% block mymessage %}
+{% include 'navbar.html' %}
+
+
+{% include 'message.html' %}
+<h2 class="pt-3 ms-5 ps-2 text-center">Items in Cart </h2>
+
+{% if query %}
+<p>search results for "{{query}}" </p>
+{% endif %}
+<table class="table container w-50 table-bordered border-dark mt-3">
+    <thead class="bg-success text-white">
+      <tr> 
+        
+        <th scope="col" width="100px">Product ID</th> 
+        <th scope="col">Product Name </th> 
+        
+        <th scope="col" width="120px">Product Price </th>   
+
+      </tr>
+    </thead>
+    {% for item in cart_items %}
+    <tbody>
+      <tr>
+      
+        <td>{{item.product_id  }}</td>
+        <td>{{item.product.name}}</td>
+    
+        <td>{{item.product.selling_price}}</td>
+        
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+
+
+
+
+
+
+{% endblock %}

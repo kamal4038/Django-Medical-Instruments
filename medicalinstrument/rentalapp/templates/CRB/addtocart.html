@@ -1,0 +1,125 @@
+{% extends  "base.html" %}
+{% load static %}
+
+{% block title %}
+ADD TO CART
+{% endblock %}
+
+{% block mymessage %}
+
+  {% include 'navbar.html' %}
+
+  
+  
+  <style>
+   
+#scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color:brown;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;
+  width: 200px;
+}
+    .card-body{
+      position: relative;
+    }
+
+  
+     #submit{
+      
+    position: absolute;
+    bottom: 20px;
+    right: 139PX;
+
+    } 
+  </style>
+  {% include 'message.html' %}
+  
+  <section class="bg-light py-4 m-5">
+  <div class="container">
+    <div class="row" >
+        <div class=" col-12 d-flex justify-content-between">
+          <h4 class="mb-3 mx-5 px-5">CART</h4>
+          <a class="btn btn-success mb-2 ms-5" href="{% url 'index' %}" ><i class="fa-solid fa-arrow-left-long"></i></a>
+        </div>
+      
+        <hr style="border-color: white;">
+        
+        {% for product in products %}
+        
+        <div class="col-md-4 col-lg-4 product">
+          <div class="card my-3">
+            <span class="px-3 py-1" style="color: blueviolet;">Product id:{{product.product_id}}</span>
+            <img src="{{product.product_image.url}} " alt="categories" class="card-image-top" height="150px" width="354px" >
+            
+            <div class="card-body" style="height: 325px;">
+              <h5 class="card-title text-primary text-center">{{product.name}} </h5>
+              
+                <form action="" method="POST">
+                  {% csrf_token %}
+                  <input type="text" placeholder="Product id" class="form-control text-center mt-3" name="product_id">
+                  <h5 class="fs-6 pt-2 text-secondary text-center">Product quantity</h5>
+                  <input type="number" class="form-control" name="product_qty"><br>
+                  <input type="email" placeholder="EMAIL ADDRESS(USER ID)" class="form-control text-center" name="email"><br>
+                
+                  {% if product.quantity > 0 %}
+                  <button  type="submit" class="btn btn-primary" style="margin-left: 88px;" id="submit">addtocart</button>
+                    {% else %}
+                    <button class="btn btn-danger" style="margin-left: 88px;">Out of Stock</button>
+                    {% endif %}
+
+                   
+                  </form>
+
+            </div>
+          </div>
+
+        </div>
+       
+           {% endfor %}
+          
+
+          
+
+         
+           <button id="scrollToTop">Scroll to Top</button>
+          </section> 
+
+          
+          <script>
+            var scrollToTopButton = document.getElementById("scrollToTop");
+            
+            window.addEventListener("scroll", function() {
+              if (window.scrollY > 200) {
+                  scrollToTopButton.style.display = "block";
+              } else {
+                  scrollToTopButton.style.display = "none";
+              }
+            });
+            
+            // Scroll to the top 
+            scrollToTopButton.addEventListener("click", function() {
+              window.scrollTo({
+                  top: 0,
+                  behavior: "smooth"
+              });
+            });
+            </script> 
+           
+{% endblock %}
+
+
+
+
+{% block footer %}
+
+{% include 'footer.html' %}
+{% endblock %}
+
+

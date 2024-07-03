@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ LOGIN PAGE
+{% endblock %}
+
+{% block mymessage %}
+<style>
+    body{
+        background-color: antiquewhite;
+        
+    }
+ 
+   .loginbtn  {
+    border-radius: 21px;
+    width: 217px;
+    background-color: lightgreen;
+}
+
+.checkbox {
+    height: 18px;
+    width: 89px;
+    
+
+}
+
+#form {
+    background-color: darkseagreen;
+    border-radius: 30px;
+}
+
+</style>
+<form action=""  method="POST" align="center" class="container w-25 p-2 my-5  " id='form' style="height:440PX;">
+    {% csrf_token %}
+    <h3 class="text-white pt-3">LOGIN FORM</h3>
+    {% include 'message.html' %}
+    <input type="email" placeholder="EMAIL ADDRESS(USER ID)" class="form-control text-center" name="email"><br>
+    <!-- <input type="text" placeholder="USER NAME" name="username" class="form-control text-center"><br> -->
+    <input type="password" placeholder="PASSWORD" name="password" class=" form-control text-center" id="password"><br>
+    <div class="d-flex justify-content-start pb-2">
+    <input type="checkbox" class=" checkbox text-white me-0" id="ShowPassword" >
+    <label class=" text-white pb-2 " style="transform: translate(-30px, -5px)"; id="Show password">Show Password </label><br>
+   </div>
+    <button class=" btn btn-lg btn-success text-center loginbtn "> Login </button><br>
+    <h5 class="p-2">Forgot Username/Password</h5>
+    <h5>Don't have an account?<a href="{% url 'register' %}" class="text-dark">Sign up</a></h5>
+
+</form>
+
+<script>
+
+const checkbox=document.getElementById("ShowPassword");
+
+const password=document.getElementById("password");
+checkbox.addEventListener('change',function(){
+    if (checkbox.checked){
+        password.type='text';
+    }
+    else{
+        password.type='password';
+    }
+});
+
+</script> 
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends  "base.html" %}
+{% load static %}
+
+{% block title %}
+home page
+{% endblock %}
+
+{% block mymessage %}
+
+  {% include 'navbar.html' %}
+
+     
+  
+   <section >
+    
+   <marquee behavior="" direction="left to right " class="text-success bg-warning" >ONLINE MEDICAL INSTRUMENTS FOR RENT AND BUY</marquee>
+    {% include 'message.html' %}
+   
+    
+   <div class="container text-primary py-3">
+          <div class="row">
+            <div class="col d-flex justify-content-between">
+        <div>
+          <a href="{% url 'index' %}">
+              <h3>oxygen cylinder</h3>
+              <img src="../static/image/oxygen cylinder.jpg" width="220px" class="me-5" alt="...">
+            </a>
+        </div>
+        <div>
+          <a href="{% url 'index'  %}">
+          <h3>wheelchair</h3>
+          <img src="../static/image/wheelchair.jpg" width="230px" alt="...">
+        </a>
+        </div>
+        <div>
+          <a href="{% url 'index'  %}">
+          <h3 class="text-center">Hospital bed</h3>
+          <img src="../static/image/bed.webp"  width="350px"  style="height: 250px;"     alt="..." style="height: 130px;" >
+        </a>
+        </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col d-flex justify-content-between">
+          <div>
+            <a href="{% url 'index'  %}">
+          <h3>Oxygen Concentrator</h3>
+          <img src="../static/image/oxygen concentrator.jpg" class="w-37  alt="..." style="height: 200px;">
+        </a> 
+        </div>
+        <div>
+          <a href="{% url 'index'  %}">
+          <h3>BiPAP Machine</h3>
+          <img src="../static/image/bi.jpg" class="w-35  alt="..." style="height: 200px;">
+        </a>
+        </div>
+        <div>
+          <a href="{% url 'index'  %}">
+          <h3>CPAP Machine</h3>
+          <img src="../static/image/cpap.jpg" class="w-35  alt="..." style="height: 150px;">
+        </a>
+        </div>
+        </div> 
+        </div>
+      </div>    
+  </section>
+
+{% endblock %}
+
+{% block footer %}
+
+{% include 'footer.html' %}
+{% endblock %}

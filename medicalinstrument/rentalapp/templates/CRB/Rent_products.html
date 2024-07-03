@@ -1,0 +1,133 @@
+{% extends  "base.html" %}
+{% load static %}
+
+{% block title %}
+ RENT
+{% endblock %}
+
+{% block mymessage %}
+
+  {% include 'navbar.html' %}
+
+  
+  
+  <style>
+   
+#scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color:brown;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;
+  width: 200px;
+}
+    .card-body{
+      position: relative;
+    }
+
+ 
+     #submit{
+      
+    position: absolute;
+    bottom: 20px;
+    right: 139PX;
+
+    } 
+
+    label{
+      margin-left: 228px;
+      margin-bottom: 25px;
+    }
+  </style>
+  {% include 'message.html' %}
+  
+  <section class="bg-light py-4 m-5">
+  <div class="container">
+    <div class="row" >
+      <div class=" col-12 d-flex justify-content-between">
+        <h4 class="mb-3 mx-5 px-5">RENT</h4>
+        <a class="btn btn-success mb-2 ms-5" href="{% url 'index' %}" ><i class="fa-solid fa-arrow-left-long"></i></a>
+      </div>
+    
+      <hr style="border-color: white;">
+        
+        
+        {% for product in products %}
+        
+        <div class="col-md-4 col-lg-4 product">
+          <div class="card my-3">
+          
+            <img src="{{product.product_image.url}} " alt="categories" class="card-image-top" height="150px" width="354px" >
+            
+            <div class="card-body" style="height:417px;">
+              <h5 class="card-title text-primary text-center">{{product.name}} </h5>
+              <span style="color: firebrick;" class="ms-5 ps-5">RENT: RS {{product.rent_rate | floatformat:"0" }} per day </span>
+              
+              
+              
+              
+              
+              <form action="" method="POST">
+                      {% csrf_token %}
+                  <label for="" class="text-secondary ">Product qty:</label><br>
+                  <input type="number" class="form-control" name="product_qty">
+                  <label for="" class="text-secondary ">Start date:</label><br>
+                  <input type="date" name="stdt" class="form-control">
+                  <label for="" class="text-secondary ">Return date:</label><br>
+                  <input type="date" name="rtdt" class="form-control">
+
+                  {% if product.quantity > 0 %}
+                  <a href="{% url 'rented'  %}"  type="submit" class="btn btn-primary" style="margin-left: 88px;" id="submit">Rent Now</a>
+                  
+                    {% else %}
+                    <button class="btn btn-danger" style="margin-left: 88px;">Out of Stock</button>
+                    {% endif %}
+    
+                  </form>
+
+
+            </div>
+          </div>
+
+        </div>
+       
+           {% endfor %}
+        
+           <button id="scrollToTop">Scroll to Top</button>
+          </section> 
+
+
+          <script>
+            var scrollToTopButton = document.getElementById("scrollToTop");
+            
+            window.addEventListener("scroll", function() {
+              if (window.scrollY > 200) {
+                  scrollToTopButton.style.display = "block";
+              } else {
+                  scrollToTopButton.style.display = "none";
+              }
+            });
+            
+            // Scroll to the top 
+            scrollToTopButton.addEventListener("click", function() {
+              window.scrollTo({
+                  top: 0,
+                  behavior: "smooth"
+              });
+            });
+            </script> 
+           
+
+          {% endblock %}   
+         
+{% block footer %}
+
+{% include 'footer.html' %}
+{% endblock %}
+
+

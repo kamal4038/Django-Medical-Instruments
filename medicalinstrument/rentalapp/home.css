@@ -1,0 +1,43 @@
+.search {
+        border-radius: 50px;
+        
+}
+
+i.fa.fa-search {
+    transform: translate(2px, 0px);
+}
+.submit{
+background-color: #fff;
+    border-color: #0d6efd;
+    color: darkorchid;
+    border-radius: 20px;
+}
+
+.fa-user{
+    font-size: 19px;
+    color:brown;
+    border: 2px solid;
+    padding: 6px;
+    border-radius: 76px;
+}
+
+.navbar>.top {
+    justify-content: end;
+}
+
+.fa-heart{
+    font-size: 26px;
+    transform: translateY(4px);
+}
+
+.fa-cart-shopping  {
+    font-size: 21px;
+    transform: translateY(2px);
+    padding-right: 6px;
+    color: gray;
+}
+       
+
+                        
+
+ 

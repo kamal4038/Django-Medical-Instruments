@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+ Rented Products
+{% endblock %}
+
+{% block mymessage %}
+{% include 'navbar.html' %}
+
+
+{% include 'message.html' %}
+<h2 class="pt-3 ms-5 ps-2 text-center">Rented Products</h2>
+<table class="table container  table-bordered border-dark mt-3">
+    <thead class="bg-success text-white">
+      <tr> 
+        <th scope="col">User ID</th>
+        <th scope="col" >Product ID</th> 
+        <th scope="col">Product Name </th> 
+        <th scope="col" >Product Qty </th>  
+        <th scope="col">Start date</th>
+        <th scope="col" >Return date</th> 
+        <th scope="col">Total days </th> 
+        <th scope="col" >Total amount </th>   
+
+      </tr>
+    </thead>
+    {% for item in rent_items %}
+    <tbody>
+      <tr>
+        <td>{{item.user_id}}</td>
+        <td>{{item.product_id }}</td>
+        <td>{{item.product.name}}</td>
+        <td>{{item.product_qty}}</td>
+        <td>{{item.start_date}}</td>
+        <td>{{item.return_date}}</td>
+        <td>{{item.total_days}}</td>
+        <td>{{item.total_amount}}</td>
+        
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+
+
+
+
+
+
+{% endblock %}

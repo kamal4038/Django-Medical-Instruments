@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+login page
+{% endblock %}
+
+{% block mymessage %}
+ {% include 'navbar.html' %}
+
+ <section>
+    <h2>Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+
+ </section>
+
+
+
+{% endblock %}

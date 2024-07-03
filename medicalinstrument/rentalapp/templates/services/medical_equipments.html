@@ -1,0 +1,38 @@
+{% extends  'base.html' %}
+
+{% block title %}
+medical equipments
+{% endblock %}
+
+{% block mymessage %}
+    {% include 'navbar.html' %}
+<link rel="stylesheet" href="../static/css/servicepage.css">
+
+<div class="container-fluid p-5 ">
+    <div class="row">
+        <div class="col-6">
+           <img src="../static/image/new.jpg" alt="">     
+        </div>
+      <div class="col-6">
+        <h2 >Medical Equipment for Rent and purchase</h2>
+        <h1>7 Hours Delivery</h1>
+        <p>Branded, Good quality, hygienic Medical equipment for use at home/hospital</p>
+
+        <button class="btn btn-success m-5" style="border-radius: 50px;" >CALL NOW</button>
+        <button class="btn btn-success" style="border-radius: 50px;" >BOOK ONLINE</button>
+</div>
+</div>
+<div class="row containe-fluidr">
+    <div class="col-12 d-flex  mt-5 justify-content-evenly p-3 " style="background-color: beige;">
+        <button class="btn btn-success" style="border-radius: 25px;">RENT</button>
+        <h1>Branded & New</h1>
+        <button class="btn btn-success" style="border-radius: 50px " >PURCHASE</button>
+    </div>
+   </div>
+      </div>  
+
+
+
+   
+
+{% endblock %}

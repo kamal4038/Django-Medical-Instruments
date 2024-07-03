@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+ Ordered Products
+{% endblock %}
+
+{% block mymessage %}
+{% include 'navbar.html' %}
+
+
+{% include 'message.html' %}
+<h2 class="pt-3 ms-5 ps-2 text-center">Ordered Products</h2>
+<table class="container table  table-bordered border-dark mt-3">
+    <thead class="bg-success text-white">
+      <tr> 
+        <th scope="col">User ID</th>
+        <th scope="col" >Product ID</th> 
+        <th scope="col">Product Name </th> 
+        <th scope="col" >Product Qty </th>  
+        <th scope="col">Order date</th>     
+        <th scope="col" >Amount </th>   
+
+      </tr>
+    </thead>
+    {% for item in ordered_items %}
+    <tbody>
+      <tr>
+        <td>{{item.user_id}}</td>
+        <td>{{item.product_id }}</td>
+        <td>{{item.product.name}}</td>
+        <td>{{item.product_qty}}</td>
+        <td>{{item.order_date}}</td>   
+        <td>{{item.amount}}</td>
+        
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+
+
+
+
+
+
+{% endblock %}
